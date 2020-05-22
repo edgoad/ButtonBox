@@ -1,0 +1,1 @@
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\SampleSerial\SampleSerial.csproj;x86

@@ -1,0 +1,10 @@
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\bin\Debug\COM.exe.config
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\bin\Debug\COM.exe
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\bin\Debug\COM.pdb
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.csprojAssemblyReference.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.Form1.resources
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.Properties.Resources.resources
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.csproj.GenerateResource.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.csproj.CoreCompileInputs.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.exe
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\COM\obj\Debug\COM.pdb
