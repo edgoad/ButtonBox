@@ -13,6 +13,7 @@ namespace COM
 {
     public partial class Form1 : Form
     {
+        delegate void SetTextCallback(string text);
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +36,8 @@ namespace COM
             {
                 serialPort1.PortName = cmbPort.Text;
                 serialPort1.Open();
+
+                serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
             }
             catch(Exception ex)
             {
@@ -48,6 +51,7 @@ namespace COM
             cmdClose.Enabled = false;
             try
             {
+                serialPort1.DataReceived -= new SerialDataReceivedEventHandler(DataReceivedHandler);
                 serialPort1.Close();
             }
             catch (Exception ex)
@@ -62,12 +66,34 @@ namespace COM
             {
                 if (serialPort1.IsOpen)
                 {
-                    txtSerial.Text = serialPort1.ReadExisting();
+                    //txtSerial.text = serialPort1.ReadExisting();
+                    //txtSerial.AppendText(serialPort1.ReadExisting());
+                    txtSerial.AppendText(serialPort1.ReadLine());
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private  void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+            {
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadExisting();
+            SetText(indata);
+            //txtSerial.AppendText(indata);
+        }
+        private void SetText(string text)
+            {
+            if(this.txtSerial.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d,new object[] {text});
+            }
+            else
+            {
+            this.txtSerial.Text = text;
             }
         }
     }
