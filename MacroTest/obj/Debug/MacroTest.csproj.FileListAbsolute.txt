@@ -1,0 +1,10 @@
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\bin\Debug\MacroTest.exe.config
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\bin\Debug\MacroTest.exe
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\bin\Debug\MacroTest.pdb
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.csprojAssemblyReference.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.Form1.resources
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.Properties.Resources.resources
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.csproj.GenerateResource.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.csproj.CoreCompileInputs.cache
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.exe
+C:\Users\edgoa\Source\Repos\edgoad\ButtonBox\MacroTest\obj\Debug\MacroTest.pdb
