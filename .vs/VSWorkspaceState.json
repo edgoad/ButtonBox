@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\COM",
-    "\\SampleSerial"
+    "\\MacroTest"
   ],
-  "SelectedNode": "\\SampleSerial\\MainPage.xaml",
+  "SelectedNode": "\\MacroTest\\MacroTest.csproj",
   "PreviewInSolutionExplorer": false
 }

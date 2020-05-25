@@ -68,6 +68,16 @@ namespace MacroTest
                     myButton.Checked = true;
                 }
             }
+
+            ComboBox port = (ComboBox)this.Controls["cboPort"];
+            port.SelectedItem = Properties.Settings.Default["COMPort"];
+            CheckBox _autoConnect = (CheckBox)this.Controls["chkAutoConnect"];
+            bool autoConnect = Convert.ToBoolean(Properties.Settings.Default["AutoConnect"]);
+            _autoConnect.Checked = autoConnect;
+            if (autoConnect)
+            {
+                ConnectPort();
+            }
         }
         private void saveDefaults()
         {
@@ -96,12 +106,20 @@ namespace MacroTest
                 {
                     Properties.Settings.Default[rbctrlName] = false;
                 }
-                Properties.Settings.Default.Save();
             }
+            ComboBox port = (ComboBox)this.Controls["cboPort"];
+            Properties.Settings.Default["COMPort"] = port.Text;
+            CheckBox autoConnect = (CheckBox)this.Controls["chkAutoConnect"];
+            Properties.Settings.Default["AutoConnect"] = autoConnect.Checked;
+
+            Properties.Settings.Default.Save();
         }
         private void cmdConnect_Click(object sender, EventArgs e)
         {
-            
+            ConnectPort();    
+        }
+        private void ConnectPort()
+        {
             try
             {
                 serialPort1.PortName = cboPort.Text;
@@ -114,12 +132,12 @@ namespace MacroTest
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CheckBox _autoConnect = (CheckBox)this.Controls["chkAutoConnect"];
             }
 
             // set notify icon
             UpdateConnectStatus();
         }
-
         private void cmdDisconnect_Click(object sender, EventArgs e)
         {
             // disconnect from serial port

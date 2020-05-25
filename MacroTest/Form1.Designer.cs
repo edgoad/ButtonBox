@@ -111,6 +111,7 @@
             this.keyFApp = new System.Windows.Forms.RadioButton();
             this.keyFHotKey = new System.Windows.Forms.RadioButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.chkAutoConnect = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -947,11 +948,22 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             // 
+            // chkAutoConnect
+            // 
+            this.chkAutoConnect.AutoSize = true;
+            this.chkAutoConnect.Location = new System.Drawing.Point(388, 30);
+            this.chkAutoConnect.Name = "chkAutoConnect";
+            this.chkAutoConnect.Size = new System.Drawing.Size(88, 17);
+            this.chkAutoConnect.TabIndex = 51;
+            this.chkAutoConnect.Text = "AutoConnect";
+            this.chkAutoConnect.UseVisualStyleBackColor = true;
+            // 
             // MacroTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 250);
+            this.Controls.Add(this.chkAutoConnect);
             this.Controls.Add(this.groupBoxF);
             this.Controls.Add(this.groupBoxE);
             this.Controls.Add(this.groupBoxD);
@@ -1095,6 +1107,7 @@
         private System.Windows.Forms.RadioButton keyFApp;
         private System.Windows.Forms.RadioButton keyFHotKey;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.CheckBox chkAutoConnect;
     }
 }
 
