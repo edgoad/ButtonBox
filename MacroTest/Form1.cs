@@ -14,6 +14,7 @@ namespace MacroTest
 {
     public partial class Form1 : Form
     {
+        bool showForm = true;
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace MacroTest
             // load settings
             loadDefaults();
 
+            // set notify icon
+            UpdateConnectStatus();
         }
         private void loadDefaults()
         {
@@ -64,7 +67,8 @@ namespace MacroTest
                 }
             }
         }
-        private void saveDefaults() {
+        private void saveDefaults()
+        {
             for (int i = 1; i <= 15; i++)
             {
                 string hexValue = i.ToString("X");  // convert to letters to make organization simpler
@@ -95,8 +99,7 @@ namespace MacroTest
         }
         private void cmdConnect_Click(object sender, EventArgs e)
         {
-            cmdConnect.Enabled = false;
-            cmdDisconnect.Enabled = true;
+            
             try
             {
                 serialPort1.PortName = cboPort.Text;
@@ -110,13 +113,16 @@ namespace MacroTest
             {
                 MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // set notify icon
+            UpdateConnectStatus();
         }
 
         private void cmdDisconnect_Click(object sender, EventArgs e)
         {
             // disconnect from serial port
-            cmdConnect.Enabled = true;
-            cmdDisconnect.Enabled = false;
+            //cmdConnect.Enabled = true;
+            //cmdDisconnect.Enabled = false;
             try
             {
                 serialPort1.DiscardInBuffer();
@@ -131,6 +137,10 @@ namespace MacroTest
 
             // save settings persistently
             saveDefaults();
+
+            // set notify icon
+            UpdateConnectStatus();
+
         }
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
@@ -181,5 +191,53 @@ namespace MacroTest
             }
         }
 
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            ToggleFormVisibility();
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            ToggleFormVisibility();
+
+            //if (this.WindowState == FormWindowState.Normal)
+            //{
+            //    Hide();
+            //    this.WindowState = FormWindowState.Minimized;
+            //}
+            //else
+            //{
+            //    Show();
+            //    this.WindowState = FormWindowState.Normal;
+            //}
+        }
+        private void UpdateConnectStatus()
+        {
+            if (serialPort1.IsOpen)
+            {
+                notifyIcon1.Text = "MacroTest (connected)";
+                cmdConnect.Enabled = false;
+                cmdDisconnect.Enabled = true;
+            }
+            else
+            {
+                notifyIcon1.Text = "MacroTest (disconnected)";
+                cmdConnect.Enabled = true;
+                cmdDisconnect.Enabled = false;
+            }
+        }
+        private void ToggleFormVisibility() {
+            if (showForm)
+            {
+                Hide();
+                showForm = false;
+            }
+            else
+            {
+                Show();
+                this.WindowState = FormWindowState.Normal;
+                showForm = true;
+            }
+        }
     }
 }

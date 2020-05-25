@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cboPort = new System.Windows.Forms.ComboBox();
             this.cmdConnect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -109,6 +110,7 @@
             this.groupBoxF = new System.Windows.Forms.GroupBox();
             this.keyFApp = new System.Windows.Forms.RadioButton();
             this.keyFHotKey = new System.Windows.Forms.RadioButton();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -419,7 +421,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(13, 263);
+            this.linkLabel1.Location = new System.Drawing.Point(17, 222);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(490, 13);
             this.linkLabel1.TabIndex = 35;
@@ -429,11 +431,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Blue;
             this.groupBox1.Controls.Add(this.key1App);
             this.groupBox1.Controls.Add(this.key1HotKey);
             this.groupBox1.Controls.Add(this.key1Text);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(30, 85);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(30, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(155, 50);
             this.groupBox1.TabIndex = 36;
@@ -441,11 +445,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Yellow;
             this.groupBox2.Controls.Add(this.key2App);
             this.groupBox2.Controls.Add(this.key2HotKey);
             this.groupBox2.Controls.Add(this.key2Text);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(191, 85);
+            this.groupBox2.Location = new System.Drawing.Point(191, 57);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(155, 50);
             this.groupBox2.TabIndex = 37;
@@ -475,11 +480,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.Black;
             this.groupBox3.Controls.Add(this.key3App);
             this.groupBox3.Controls.Add(this.key3HotKey);
             this.groupBox3.Controls.Add(this.key3Text);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(352, 85);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(352, 57);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(155, 50);
             this.groupBox3.TabIndex = 38;
@@ -509,11 +516,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.Red;
             this.groupBox4.Controls.Add(this.key4App);
             this.groupBox4.Controls.Add(this.key4HotKey);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.key4Text);
-            this.groupBox4.Location = new System.Drawing.Point(513, 85);
+            this.groupBox4.Location = new System.Drawing.Point(513, 57);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(155, 50);
             this.groupBox4.TabIndex = 39;
@@ -543,11 +551,12 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.Color.Green;
             this.groupBox5.Controls.Add(this.key5App);
             this.groupBox5.Controls.Add(this.key5HotKey);
             this.groupBox5.Controls.Add(this.key5Text);
             this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Location = new System.Drawing.Point(674, 85);
+            this.groupBox5.Location = new System.Drawing.Point(700, 57);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(155, 50);
             this.groupBox5.TabIndex = 40;
@@ -577,11 +586,13 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.BackColor = System.Drawing.Color.Blue;
             this.groupBox6.Controls.Add(this.key6App);
             this.groupBox6.Controls.Add(this.key6HotKey);
             this.groupBox6.Controls.Add(this.key6Text);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Location = new System.Drawing.Point(30, 141);
+            this.groupBox6.ForeColor = System.Drawing.Color.White;
+            this.groupBox6.Location = new System.Drawing.Point(30, 113);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(155, 50);
             this.groupBox6.TabIndex = 41;
@@ -611,11 +622,12 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.BackColor = System.Drawing.Color.Yellow;
             this.groupBox7.Controls.Add(this.key7App);
             this.groupBox7.Controls.Add(this.key7HotKey);
             this.groupBox7.Controls.Add(this.key7Text);
             this.groupBox7.Controls.Add(this.label7);
-            this.groupBox7.Location = new System.Drawing.Point(191, 141);
+            this.groupBox7.Location = new System.Drawing.Point(191, 113);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(155, 50);
             this.groupBox7.TabIndex = 42;
@@ -645,11 +657,13 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.BackColor = System.Drawing.Color.Black;
             this.groupBox8.Controls.Add(this.key8App);
             this.groupBox8.Controls.Add(this.key8HotKey);
             this.groupBox8.Controls.Add(this.label8);
             this.groupBox8.Controls.Add(this.key8Text);
-            this.groupBox8.Location = new System.Drawing.Point(352, 141);
+            this.groupBox8.ForeColor = System.Drawing.Color.White;
+            this.groupBox8.Location = new System.Drawing.Point(352, 113);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(155, 50);
             this.groupBox8.TabIndex = 43;
@@ -679,11 +693,12 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.BackColor = System.Drawing.Color.Red;
             this.groupBox9.Controls.Add(this.key9App);
             this.groupBox9.Controls.Add(this.key9HotKey);
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Controls.Add(this.key9Text);
-            this.groupBox9.Location = new System.Drawing.Point(513, 141);
+            this.groupBox9.Location = new System.Drawing.Point(513, 113);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(155, 50);
             this.groupBox9.TabIndex = 44;
@@ -713,11 +728,12 @@
             // 
             // groupBoxA
             // 
+            this.groupBoxA.BackColor = System.Drawing.Color.Green;
             this.groupBoxA.Controls.Add(this.keyAApp);
             this.groupBoxA.Controls.Add(this.keyAHotKey);
             this.groupBoxA.Controls.Add(this.keyAText);
             this.groupBoxA.Controls.Add(this.label10);
-            this.groupBoxA.Location = new System.Drawing.Point(674, 141);
+            this.groupBoxA.Location = new System.Drawing.Point(700, 113);
             this.groupBoxA.Name = "groupBoxA";
             this.groupBoxA.Size = new System.Drawing.Size(155, 50);
             this.groupBoxA.TabIndex = 45;
@@ -747,11 +763,13 @@
             // 
             // groupBoxB
             // 
+            this.groupBoxB.BackColor = System.Drawing.Color.Blue;
             this.groupBoxB.Controls.Add(this.keyBApp);
             this.groupBoxB.Controls.Add(this.keyBHotKey);
             this.groupBoxB.Controls.Add(this.label11);
             this.groupBoxB.Controls.Add(this.keyBText);
-            this.groupBoxB.Location = new System.Drawing.Point(30, 197);
+            this.groupBoxB.ForeColor = System.Drawing.Color.White;
+            this.groupBoxB.Location = new System.Drawing.Point(30, 169);
             this.groupBoxB.Name = "groupBoxB";
             this.groupBoxB.Size = new System.Drawing.Size(155, 50);
             this.groupBoxB.TabIndex = 46;
@@ -781,11 +799,12 @@
             // 
             // groupBoxC
             // 
+            this.groupBoxC.BackColor = System.Drawing.Color.Yellow;
             this.groupBoxC.Controls.Add(this.keyCApp);
             this.groupBoxC.Controls.Add(this.keyCHotKey);
             this.groupBoxC.Controls.Add(this.label12);
             this.groupBoxC.Controls.Add(this.keyCText);
-            this.groupBoxC.Location = new System.Drawing.Point(191, 197);
+            this.groupBoxC.Location = new System.Drawing.Point(191, 169);
             this.groupBoxC.Name = "groupBoxC";
             this.groupBoxC.Size = new System.Drawing.Size(155, 50);
             this.groupBoxC.TabIndex = 47;
@@ -815,11 +834,13 @@
             // 
             // groupBoxD
             // 
+            this.groupBoxD.BackColor = System.Drawing.Color.Black;
             this.groupBoxD.Controls.Add(this.keyDApp);
             this.groupBoxD.Controls.Add(this.keyDHotKey);
             this.groupBoxD.Controls.Add(this.label13);
             this.groupBoxD.Controls.Add(this.keyDText);
-            this.groupBoxD.Location = new System.Drawing.Point(352, 197);
+            this.groupBoxD.ForeColor = System.Drawing.Color.White;
+            this.groupBoxD.Location = new System.Drawing.Point(352, 169);
             this.groupBoxD.Name = "groupBoxD";
             this.groupBoxD.Size = new System.Drawing.Size(155, 50);
             this.groupBoxD.TabIndex = 48;
@@ -849,11 +870,12 @@
             // 
             // groupBoxE
             // 
+            this.groupBoxE.BackColor = System.Drawing.Color.Red;
             this.groupBoxE.Controls.Add(this.keyEApp);
             this.groupBoxE.Controls.Add(this.keyEHotKey);
             this.groupBoxE.Controls.Add(this.label14);
             this.groupBoxE.Controls.Add(this.keyEText);
-            this.groupBoxE.Location = new System.Drawing.Point(513, 197);
+            this.groupBoxE.Location = new System.Drawing.Point(513, 169);
             this.groupBoxE.Name = "groupBoxE";
             this.groupBoxE.Size = new System.Drawing.Size(155, 50);
             this.groupBoxE.TabIndex = 49;
@@ -883,11 +905,12 @@
             // 
             // groupBoxF
             // 
+            this.groupBoxF.BackColor = System.Drawing.Color.Green;
             this.groupBoxF.Controls.Add(this.keyFApp);
             this.groupBoxF.Controls.Add(this.keyFHotKey);
             this.groupBoxF.Controls.Add(this.label15);
             this.groupBoxF.Controls.Add(this.keyFText);
-            this.groupBoxF.Location = new System.Drawing.Point(674, 197);
+            this.groupBoxF.Location = new System.Drawing.Point(700, 169);
             this.groupBoxF.Name = "groupBoxF";
             this.groupBoxF.Size = new System.Drawing.Size(155, 50);
             this.groupBoxF.TabIndex = 50;
@@ -915,11 +938,20 @@
             this.keyFHotKey.Text = "HotKey";
             this.keyFHotKey.UseVisualStyleBackColor = true;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipTitle = "MacroTest";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "MacroTest";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 303);
+            this.ClientSize = new System.Drawing.Size(875, 250);
             this.Controls.Add(this.groupBoxF);
             this.Controls.Add(this.groupBoxE);
             this.Controls.Add(this.groupBoxD);
@@ -939,9 +971,12 @@
             this.Controls.Add(this.cmdDisconnect);
             this.Controls.Add(this.cmdConnect);
             this.Controls.Add(this.cboPort);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1059,6 +1094,7 @@
         private System.Windows.Forms.GroupBox groupBoxF;
         private System.Windows.Forms.RadioButton keyFApp;
         private System.Windows.Forms.RadioButton keyFHotKey;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
