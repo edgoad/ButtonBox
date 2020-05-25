@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Diagnostics;
 
 //TODO: find out why connection intermittenly fails and must be unplugged/replugged
+// TODO: Have autoconnect
 namespace MacroTest
 {
     public partial class MacroTest : Form
