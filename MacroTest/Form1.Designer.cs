@@ -1,6 +1,6 @@
 ﻿namespace MacroTest
 {
-    partial class Form1
+    partial class MacroTest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MacroTest));
             this.cboPort = new System.Windows.Forms.ComboBox();
             this.cmdConnect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -947,7 +947,7 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             // 
-            // Form1
+            // MacroTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -973,8 +973,8 @@
             this.Controls.Add(this.cboPort);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MacroTest";
+            this.Text = "MacroTest";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.groupBox1.ResumeLayout(false);

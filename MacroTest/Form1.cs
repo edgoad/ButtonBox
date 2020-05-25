@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Diagnostics;
 
+//TODO: find out why connection intermittenly fails and must be unplugged/replugged
 namespace MacroTest
 {
-    public partial class Form1 : Form
+    public partial class MacroTest : Form
     {
         bool showForm = true;
-        public Form1()
+        public MacroTest()
         {
             InitializeComponent();
         }
