@@ -35,25 +35,29 @@ namespace MacroTest
         {
             for (int i = 1; i <= 15; i++)
             {
-                string hexValue = i.ToString("X");
+                string hexValue = i.ToString("X"); // convert to hex for organization
+
+                // Find text control
                 string ctrlName = "key" + hexValue + "Text";
                 TextBox myText = (TextBox)this.Controls[ctrlName];
-                //myText.Text = Properties.Settings.Default.key1Text;
-                myText.Text = Properties.Settings.Default[ctrlName].ToString();
-                
-                ctrlName = "key" + hexValue + "HotKey";
+
+                // Find radio button control
+                string rbctrlName = "key" + hexValue + "HotKey";
                 string gbName = "groupBox" + hexValue;
-                bool HotKey = Convert.ToBoolean(Properties.Settings.Default[ctrlName].ToString());
+                bool HotKey = Convert.ToBoolean(Properties.Settings.Default[rbctrlName].ToString());
                 GroupBox groupName = (GroupBox)this.Controls[gbName];
+
+                // Set defaults
+                myText.Text = Properties.Settings.Default[ctrlName].ToString();
                 if (HotKey)
                 {
-                    RadioButton myButton = (RadioButton)groupName.Controls[ctrlName];
+                    RadioButton myButton = (RadioButton)groupName.Controls[rbctrlName];
                     myButton.Checked = true;
                 }
                 else
                 {
-                    ctrlName = "key" + hexValue + "App";
-                    RadioButton myButton = (RadioButton)groupName.Controls[ctrlName];
+                    rbctrlName = "key" + hexValue + "App";
+                    RadioButton myButton = (RadioButton)groupName.Controls[rbctrlName];
                     myButton.Checked = true;
                 }
             }
@@ -61,25 +65,27 @@ namespace MacroTest
         private void saveDefaults() {
             for (int i = 1; i <= 15; i++)
             {
-                string hexValue = i.ToString("X");
+                string hexValue = i.ToString("X");  // convert to letters to make organization simpler
+
+                // Get command information
                 string ctrlName = "key" + hexValue + "Text";
                 TextBox myText = (TextBox)this.Controls[ctrlName];
-                //myText.Text = Properties.Settings.Default.key1Text;
-                //myText.Text = Properties.Settings.Default[ctrlName].ToString();
-                Properties.Settings.Default[ctrlName] = myText.Text;
 
-                ctrlName = "key" + hexValue + "HotKey";
+                // Get radio button details
+                string rbctrlName = "key" + hexValue + "HotKey";
                 string gbName = "groupBox" + hexValue;
-                //bool HotKey = Convert.ToBoolean(Properties.Settings.Default[ctrlName].ToString());
                 GroupBox groupName = (GroupBox)this.Controls[gbName];
-                RadioButton myButton = (RadioButton)groupName.Controls[ctrlName];
+                RadioButton myButton = (RadioButton)groupName.Controls[rbctrlName];
+
+                // save settings
+                Properties.Settings.Default[ctrlName] = myText.Text;
                 if (myButton.Checked)
                 {
-                    Properties.Settings.Default[ctrlName] = true;
+                    Properties.Settings.Default[rbctrlName] = true;
                 }
                 else
                 {
-                    Properties.Settings.Default[ctrlName] = false;
+                    Properties.Settings.Default[rbctrlName] = false;
                 }
                 Properties.Settings.Default.Save();
             }
@@ -125,78 +131,18 @@ namespace MacroTest
         }
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            // get serial data and trim off CRLF
             SerialPort sp = (SerialPort)sender;
             string indata = sp.ReadExisting().ToUpper();
             indata = indata.Trim('\r');
             indata = indata.Trim('\n');
             indata = indata.Trim('\r');
 
-            //SetText(indata);
-            //txtSerial.AppendText(indata);
             try
             {
                 string command = "";
                 bool appRadio = false;
-                //switch (indata)
-                //{
-                //    case "1":
-                //        command = key1Text.Text.Trim();
-                //        if (key1App.Checked)
-                //        {
-                //            appRadio = true;
-                //        }
-                //        else
-                //        {
-                //            appRadio = false;
-                //        }
-                //        break;
-                //    case "2":
-                //        command = key2Text.Text.Trim();
-                //        if (command == "")
-                //        {
-                //            MessageBox.Show(indata, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //        }
-                //        else if (key2App.Checked)
-                //        {
-                //            Process.Start(command);
-                //        }
-                //        else
-                //        {
-                //            SendKeys.SendWait(command);
-                //        }
-                //        break;
-
-                //    //case "3":
-                //    //    break;
-                //    //case "4":
-                //    //    break;
-                //    //case "5":
-                //    //    break;
-                //    //case "6":
-                //    //    break;
-                //    //case "7":
-                //    //    break;
-                //    //case "8":
-                //    //    break;
-                //    //case "9":
-                //    //    break;
-                //    //case "a":
-                //    //    break;
-                //    //case "b":
-                //    //    break;
-                //    //case "c":
-                //    //    break;
-                //    //case "d":
-                //    //    break;
-                //    //case "e":
-                //    //    break;
-                //    //case "f":
-                //    //    break;
-                //    default:
-                //        //MessageBox.Show(indata, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //        break;
-                //}
-
+                
                 // get command text
                 string ctrlName = "key" + indata + "Text";
                 TextBox myText = (TextBox)this.Controls[ctrlName];
