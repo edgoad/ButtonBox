@@ -38,14 +38,16 @@ namespace MacroTest
                 string hexValue = i.ToString("X"); // convert to hex for organization
 
                 // Find text control
+                string gbName = "groupBox" + hexValue;
+                GroupBox groupName = (GroupBox)this.Controls[gbName];
                 string ctrlName = "key" + hexValue + "Text";
-                TextBox myText = (TextBox)this.Controls[ctrlName];
+                TextBox myText = (TextBox)groupName.Controls[ctrlName];
+                //TextBox myText = (TextBox)this.Controls[ctrlName];
 
                 // Find radio button control
                 string rbctrlName = "key" + hexValue + "HotKey";
-                string gbName = "groupBox" + hexValue;
                 bool HotKey = Convert.ToBoolean(Properties.Settings.Default[rbctrlName].ToString());
-                GroupBox groupName = (GroupBox)this.Controls[gbName];
+
 
                 // Set defaults
                 myText.Text = Properties.Settings.Default[ctrlName].ToString();
@@ -68,13 +70,14 @@ namespace MacroTest
                 string hexValue = i.ToString("X");  // convert to letters to make organization simpler
 
                 // Get command information
+                string gbName = "groupBox" + hexValue;
+                GroupBox groupName = (GroupBox)this.Controls[gbName];
                 string ctrlName = "key" + hexValue + "Text";
-                TextBox myText = (TextBox)this.Controls[ctrlName];
+                TextBox myText = (TextBox)groupName.Controls[ctrlName];
+                //TextBox myText = (TextBox)this.Controls[ctrlName];
 
                 // Get radio button details
                 string rbctrlName = "key" + hexValue + "HotKey";
-                string gbName = "groupBox" + hexValue;
-                GroupBox groupName = (GroupBox)this.Controls[gbName];
                 RadioButton myButton = (RadioButton)groupName.Controls[rbctrlName];
 
                 // save settings
@@ -142,17 +145,18 @@ namespace MacroTest
             {
                 string command = "";
                 bool appRadio = false;
-                
+
                 // get command text
                 string ctrlName = "key" + indata + "Text";
-                TextBox myText = (TextBox)this.Controls[ctrlName];
+                string gbName = "groupBox" + indata;
+                GroupBox groupName = (GroupBox)this.Controls[gbName];
+                TextBox myText = (TextBox)groupName.Controls[ctrlName];
+                //TextBox myText = (TextBox)this.Controls[ctrlName];
                 command = myText.Text;
 
                 // Get radio button
                 ctrlName = "key" + indata + "HotKey";
-                string gbName = "groupBox" + indata;
                 //bool HotKey = Convert.ToBoolean(Properties.Settings.Default[ctrlName].ToString());
-                GroupBox groupName = (GroupBox)this.Controls[gbName];
                 RadioButton myButton = (RadioButton)groupName.Controls[ctrlName];
                 appRadio = myButton.Checked;
 
@@ -171,7 +175,7 @@ namespace MacroTest
                     Process.Start(command);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
