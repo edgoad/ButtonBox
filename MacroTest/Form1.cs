@@ -24,11 +24,16 @@ namespace MacroTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string[] ports = SerialPort.GetPortNames();
-            cboPort.Items.AddRange(ports);
-            cboPort.SelectedIndex = 0;
-            cmdConnect.Enabled = true;
-            cmdDisconnect.Enabled = false;
+            try
+            {
+                string[] ports = SerialPort.GetPortNames();
+                cboPort.Items.AddRange(ports);
+                cboPort.SelectedIndex = 0;
+                cmdConnect.Enabled = true;
+                cmdDisconnect.Enabled = false;
+            }
+            catch(Exception ex)
+            { }
 
             // load settings
             loadDefaults();
@@ -257,6 +262,27 @@ namespace MacroTest
                 Show();
                 this.WindowState = FormWindowState.Normal;
                 showForm = true;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                if (lblConnected.Text != "Connected")
+                {
+                    UpdateConnectStatus();
+                    lblConnected.Text = "Connected";
+                    lblConnected.BackColor = Color.Green;
+                }
+            }
+            else {
+                if (lblConnected.Text != "Disconnected")
+                {
+                    UpdateConnectStatus();
+                    lblConnected.Text = "Disconnected";
+                    lblConnected.BackColor = Color.Red;
+                }
             }
         }
     }

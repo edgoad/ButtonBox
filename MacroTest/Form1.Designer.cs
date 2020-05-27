@@ -112,6 +112,8 @@
             this.keyFHotKey = new System.Windows.Forms.RadioButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.chkAutoConnect = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblConnected = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -958,11 +960,28 @@
             this.chkAutoConnect.Text = "AutoConnect";
             this.chkAutoConnect.UseVisualStyleBackColor = true;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblConnected
+            // 
+            this.lblConnected.AutoSize = true;
+            this.lblConnected.BackColor = System.Drawing.Color.Red;
+            this.lblConnected.Location = new System.Drawing.Point(510, 30);
+            this.lblConnected.Name = "lblConnected";
+            this.lblConnected.Size = new System.Drawing.Size(73, 13);
+            this.lblConnected.TabIndex = 52;
+            this.lblConnected.Text = "Disconnected";
+            // 
             // MacroTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 250);
+            this.Controls.Add(this.lblConnected);
             this.Controls.Add(this.chkAutoConnect);
             this.Controls.Add(this.groupBoxF);
             this.Controls.Add(this.groupBoxE);
@@ -1108,6 +1127,8 @@
         private System.Windows.Forms.RadioButton keyFHotKey;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.CheckBox chkAutoConnect;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblConnected;
     }
 }
 
