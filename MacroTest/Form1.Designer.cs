@@ -114,6 +114,7 @@
             this.chkAutoConnect = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblConnected = new System.Windows.Forms.Label();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -976,11 +977,20 @@
             this.lblConnected.TabIndex = 52;
             this.lblConnected.Text = "Disconnected";
             // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(30, 239);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(821, 157);
+            this.txtLog.TabIndex = 53;
+            // 
             // MacroTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 250);
+            this.ClientSize = new System.Drawing.Size(875, 408);
+            this.Controls.Add(this.txtLog);
             this.Controls.Add(this.lblConnected);
             this.Controls.Add(this.chkAutoConnect);
             this.Controls.Add(this.groupBoxF);
@@ -1129,6 +1139,7 @@
         private System.Windows.Forms.CheckBox chkAutoConnect;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblConnected;
+        private System.Windows.Forms.TextBox txtLog;
     }
 }
 

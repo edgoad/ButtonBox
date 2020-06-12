@@ -17,6 +17,7 @@ namespace MacroTest
     public partial class MacroTest : Form
     {
         bool showForm = true;
+        bool isConnected;
         public MacroTest()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace MacroTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            isConnected = false;
             try
             {
                 string[] ports = SerialPort.GetPortNames();
@@ -125,6 +127,7 @@ namespace MacroTest
         }
         private void ConnectPort()
         {
+            appendLog("Attempting to connect to " + cboPort.Text);
             try
             {
                 serialPort1.PortName = cboPort.Text;
@@ -133,11 +136,13 @@ namespace MacroTest
                 serialPort1.DiscardOutBuffer();
 
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                appendLog("Connected to " + cboPort.Text);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CheckBox _autoConnect = (CheckBox)this.Controls["chkAutoConnect"];
+                //MessageBox.Show(ex.ToString(), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //CheckBox _autoConnect = (CheckBox)this.Controls["chkAutoConnect"];
+                appendLog("Could not connect to port");
             }
 
             // set notify icon
@@ -148,6 +153,7 @@ namespace MacroTest
             // disconnect from serial port
             //cmdConnect.Enabled = true;
             //cmdDisconnect.Enabled = false;
+            appendLog("Disconnecting from " + cboPort.Text);
             try
             {
                 serialPort1.DiscardInBuffer();
@@ -157,7 +163,8 @@ namespace MacroTest
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                appendLog("Failed to disconnect from " + cboPort.Text);
             }
 
             // save settings persistently
@@ -199,7 +206,8 @@ namespace MacroTest
                 // if appRadio is true, run command. Otherwise run hotkey
                 if (command == "")
                 {
-                    MessageBox.Show(indata, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show(indata, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    appendLog("Unmapped button pushed: " + indata);
                 }
                 else if (appRadio)
                 {
@@ -212,7 +220,8 @@ namespace MacroTest
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                appendLog(ex.Message);
             }
         }
 
@@ -243,12 +252,14 @@ namespace MacroTest
                 notifyIcon1.Text = "MacroTest (connected)";
                 cmdConnect.Enabled = false;
                 cmdDisconnect.Enabled = true;
+                isConnected = true;
             }
             else
             {
                 notifyIcon1.Text = "MacroTest (disconnected)";
                 cmdConnect.Enabled = true;
                 cmdDisconnect.Enabled = false;
+                isConnected = false;
             }
         }
         private void ToggleFormVisibility() {
@@ -277,12 +288,40 @@ namespace MacroTest
                 }
             }
             else {
-                if (lblConnected.Text != "Disconnected")
+                if (chkAutoConnect.Checked)
+                {
+                    ConnectPort();
+                }
+                if (serialPort1.IsOpen ==false & lblConnected.Text != "Disconnected")
                 {
                     UpdateConnectStatus();
                     lblConnected.Text = "Disconnected";
                     lblConnected.BackColor = Color.Red;
                 }
+            }
+        }
+        //private void appendLog(string message)
+        //{
+        //    string date = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+        //    this.txtLog.AppendText(date + " - " + message + "\r\n");
+        //}
+        delegate void SetTextCallback(string text);
+
+        private void appendLog(string message)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.txtLog.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(appendLog);
+                this.Invoke(d, new object[] { message });
+            }
+            else
+            {
+                //this.textBox1.Text = text;
+                string date = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                txtLog.AppendText(date + " - " + message + "\r\n");
             }
         }
     }
